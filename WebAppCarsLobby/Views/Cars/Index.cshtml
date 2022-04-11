@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Cars - Index";
+}
+
+<h1>Cars Index</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (string[] car in ViewBag.Cars)
+        {
+            <tr>
+                <td>@car[0]</td>
+                <td>@car[1]</td>
+                <td>@car[2]</td>
+            </tr>
+        }
+    </tbody>
+</table>
