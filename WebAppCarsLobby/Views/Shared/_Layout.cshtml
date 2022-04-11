@@ -6,8 +6,24 @@
     <link href="~/css/Site.css" rel="stylesheet" asp-append-version="true" />
 </head>
 <body>
+    <header>
+        <h3>Logo</h3>
+        <nav>
+            <ul>
+                <li>
+                    <a asp-controller="Home" asp-action="Index" >Home</a>
+                </li>
+                <li>
+                    <a asp-controller="Cars" asp-action="Index" >Cars</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <div>
         @RenderBody()
     </div>
+    <footer>
+        <p>&copy; Ulf B.</p>
+    </footer>
 </body>
 </html>

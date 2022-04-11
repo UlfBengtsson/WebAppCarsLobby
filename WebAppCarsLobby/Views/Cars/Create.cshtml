@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Cars - Add new car";
+}
+
+<h1>Add new car</h1>
+
+<form asp-action="Create" method="post">
+    <label for="brand">Brand:</label>
+    <input type="text" name="brand" id="brand" list="brandsList" required />
+
+    <label for="model">Model:</label>
+    <input type="text" name="model" id="model" required />
+
+    <label for="price">Price:</label>
+    <input type="number" name="price" id="price" min="0" step="100" required /><span>Kr</span>
+
+    <button type="submit">Create car</button>
+
+    <datalist id="brandsList">
+        @foreach (string brand in ViewBag.Brands)
+        {
+            <option value="@brand">@brand</option>
+        }
+    </datalist>
+</form>
