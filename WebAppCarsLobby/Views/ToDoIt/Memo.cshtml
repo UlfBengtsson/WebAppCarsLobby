@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "ToDo It";
+}
+
+<h1>ToDo It</h1>
+
+<form asp-action="AddMemo" method="post">
+    <input type="text" name="memo" value="" placeholder="Add ToDo text here" />
+    <input type="submit"  value="Add ToDo" />
+</form>
+
+<ul>
+    @if (ViewBag.Memos != null && ViewBag.Memos is string)
+    {
+        string[] memoArray = (ViewBag.Memos as string).Split('|');
+
+        foreach (string memo in memoArray)
+        {
+            <li>
+                <p>@memo</p>
+            </li>
+        }
+    }
+    else
+    {
+        <li><p>Nothing to do yet</p></li>
+    }
+</ul>

@@ -5,16 +5,22 @@
     <title>@ViewBag.Title</title>
     <link href="~/css/Site.css" rel="stylesheet" asp-append-version="true" />
 </head>
-<body>
+<body class="@ViewBag.CookieColor">
     <header>
         <h3>Logo</h3>
         <nav>
             <ul>
                 <li>
-                    <a asp-controller="Home" asp-action="Index" >Home</a>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
                 </li>
                 <li>
-                    <a asp-controller="Cars" asp-action="Index" >Cars</a>
+                    <a asp-controller="Cars" asp-action="Index">Cars</a>
+                </li>
+                <li>
+                    <a asp-controller="ToDoIt" asp-action="Memo">ToDo It</a>
+                </li>
+                <li>
+                    <a asp-controller="ColorTheSite" asp-action="Index">Cookie Color</a>
                 </li>
             </ul>
         </nav>

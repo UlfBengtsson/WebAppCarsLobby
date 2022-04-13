@@ -9,3 +9,13 @@
     background-color: red;
     color: white;
 }
+
+.blackPage {
+    background-color: black;
+    color: white;
+}
+
+.whitePage {
+    background-color: white;
+    color: black;
+}

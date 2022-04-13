@@ -16,6 +16,15 @@ namespace WebAppCarsLobby
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(3);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddMvc();
         }
 
@@ -30,8 +39,16 @@ namespace WebAppCarsLobby
             app.UseStaticFiles();
             app.UseRouting();
 
+            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "AddCarCreate",
+                    pattern: "/Cars/AddNewCar", //comper to uri/url
+                    defaults: new { controller = "Cars", action = "Create" }
+                );
+
                 endpoints.MapControllerRoute(
                     name: "lastRoute",
                     pattern: "{controller=Home}/{action=Index}/{id?}"

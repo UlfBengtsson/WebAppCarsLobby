@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Color the Site";
+}
+
+<h1>Color the Site</h1>
+
+<form asp-action="SetColor" method="post">
+    <select name="id">
+        <option value="0" disabled>Pick Color set</option>
+        <option value="1">Black Page</option>
+        <option value="2">White Page</option>
+    </select>
+    <button>Set Color of Page</button>
+</form>
