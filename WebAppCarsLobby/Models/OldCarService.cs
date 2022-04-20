@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace WebAppCarsLobby.Models
 {
-    public class CarService
+    public class OldCarService
     {
 
         static List<string[]> carsStorage;
         static List<string> brandsStorage;
 
-        public CarService()
+        public OldCarService()
         {
             if (carsStorage == null)
             {

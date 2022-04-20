@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAppCarsLobby.Models;
+using WebAppCarsLobby.Models.Cars;
 
 namespace WebAppCarsLobby.Controllers
 {
     public class CarsController : Controller
     {
-        CarService _carService;
+        ICarService _carService;
 
         public CarsController()
         {
@@ -19,37 +19,30 @@ namespace WebAppCarsLobby.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.Cars = _carService.GetCars();
-            return View();
+            return View(_carService.GetCars());
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Brands = _carService.Getbrands();
-            return View();
+            CreateCarViewModel createCar = new CreateCarViewModel();
+            createCar.BrandList = _carService.Getbrands();
+
+            return View(createCar);
         }
 
         [HttpPost]
-        public IActionResult Create(string brand, string model, string price)
+        public IActionResult Create(CreateCarViewModel createCar)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _carService.Create(brand, model, price);
-
+                _carService.CreateCar(createCar);
                 return RedirectToAction("Index");
             }
-            catch (ArgumentException exceptionData)
-            {
-                ViewBag.ExceptionMsg = exceptionData.Message;
-            }
 
-            ViewBag.Brand = brand;
-            ViewBag.Model = model;
-            ViewBag.Price = price;
-            ViewBag.Brands = _carService.Getbrands();
+            createCar.BrandList = _carService.Getbrands();
 
-            return View();
+            return View(createCar);
         }
     }
 }

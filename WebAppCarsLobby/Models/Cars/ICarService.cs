@@ -10,6 +10,6 @@ namespace WebAppCarsLobby.Models.Cars
         List<Car> GetCars();
         List<string> Getbrands();
         Car CreateCar(CreateCarViewModel createCar);
-        Car GetById();
+        Car GetById(int id);
     }
 }

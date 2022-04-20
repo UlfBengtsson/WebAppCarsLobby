@@ -1,28 +1,27 @@
-﻿@{
+﻿@model CreateCarViewModel
+@{
     ViewData["Title"] = "Cars - Add new car";
 }
 
 <h1>Add new car</h1>
 
-@if (ViewBag.ExceptionMsg != null)
-{
-    <h4 class="danger">@ViewBag.ExceptionMsg</h4>
-}
-
 <form asp-action="Create" method="post">
-    <label for="brand">Brand:</label>
-    <input type="text" name="brand" id="brand" list="brandsList" required value="@ViewBag.Brand" />
+    <label asp-for="Brand"></label>
+    <input asp-for="Brand" list="brandsList" />
+    <span asp-validation-for="Brand"></span>
 
-    <label for="model">Model:</label>
-    <input type="text" name="model" id="model" required value="@ViewBag.Model" />
+    <label asp-for="ModelName"></label>
+    <input asp-for="ModelName" />
+    <span asp-validation-for="ModelName"></span>
 
-    <label for="price">Price:</label>
-    <input type="number" name="price" id="price" min="0" step="100" required value="@ViewBag.Price" /><span>Kr</span>
+    <label asp-for="Price"></label>
+    <input asp-for="Price" min="0" step="100" /><span>Kr</span>
+    <span asp-validation-for="Price"></span>
 
     <button type="submit">Create car</button>
 
     <datalist id="brandsList">
-        @foreach (string brand in ViewBag.Brands)
+        @foreach (string brand in Model.BrandList)
         {
             <option value="@brand">@brand</option>
         }
